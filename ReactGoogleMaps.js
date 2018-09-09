@@ -1,44 +1,25 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import MapView from 'react-native-maps';
-
-class App extends React.Component {
+import React, { Component } from 'react'; 
+import ReactDOM from 'react-dom';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+ 
+export class MapContainer extends Component {
   render() {
     return (
-      <View style = {StyleSheet.container}>
-      
-        <MapView style = {StyleSheet.map}
-          region = {{
-            latitude: lat,
-            long: longitude,
-            latitudeDelta = 0.1,
-            longitudeDelta = 0.1
-          }}
-        >
-        </MapView>
-
-      </View>
+      <Map google={this.props.google} zoom={14}>
+ 
+        <Marker onClick={this.onMarkerClick}
+                name={'Current location'} />
+ 
+        <InfoWindow onClose={this.onInfoWindowClose}>
+            <div>
+              <h1>{this.state.selectedPlace.name}</h1>
+            </div>
+        </InfoWindow>
+      </Map>
     );
   }
 }
-
-const styles = StyleSheeT.create({
-  container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    justifyContent: 'flex-end',
-    alignItems: 'center'
-  },
-  map: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0
-  }
-})
-
-export default App;
+ 
+export default GoogleApiWrapper({
+  apiKey: ("AIzaSyBPrRa7YVpAc0ybQcihAkz9FXklbjyHTcI")
+})(MapContainer)
