@@ -1,8 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app/App.jsx';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './app/Router.js';
 
 // load stylesheet
 require("./default.css");
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+    <BrowserRouter>
+        <Router />
+    </BrowserRouter>,
+    document.getElementById('app')
+);

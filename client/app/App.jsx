@@ -1,12 +1,28 @@
 import React from 'react';
 
 export default class App extends React.Component {
-    render () {
+    handleClick() {
+        alert("You clicked button")
+
+    }
+
+    rednerSubmitBtn() {
+        return (
+            <div>
+                <form autoComplete="true">
+                    <input type="text" name="postalcode" />
+                </form>
+            </div>
+        )
+    }
+
+    render() {
         return (
             <section>
-                <header id="flex-header">
+                <header style={{ backgroundColor: "" }} id="flex-header">
                     <div class="cloud-header"></div>
-                    <h1>Congratulations!</h1>
+                    <h1>Hello World!</h1>
+                    {this.rednerSubmitBtn()}
                     <h2>You are currently running a Node.js app built for the IBM Cloud.</h2>
                 </header>
                 <main>
