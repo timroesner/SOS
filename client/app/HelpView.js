@@ -1,6 +1,16 @@
 import React from 'react';
+import InputField from './InputField';
+import DropDown from './DropDown.jsx';
 
 export default class HelpView extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            name: "",
+            contact: "",
+            relation: ""
+        }
+    }
 
     submitForm(e) {
         e.preventDefault()
@@ -19,6 +29,14 @@ export default class HelpView extends React.Component {
         console.log(position.coords.longitude)
     }
 
+    txtChanged(e, type) {
+        if (type === "name") {
+            this.setState({ name: e.target.value })
+        } else if (type === "contact") {
+            this.setState({ contact: e.target.value })
+        }
+    }
+
     render() {
         return (
             <div>
@@ -26,8 +44,23 @@ export default class HelpView extends React.Component {
                     Need Help?
                 </h1>
                 <form>
-                    {/* Input for Name */}
-                    <span>{/* Input for Contact and Dropdown*/}</span>
+                    <InputField
+                        placeholder="Name"
+                        handleChange={e => this.txtChanged(e, "name")}
+                        width="100%"
+                        value={this.state.name}
+                        autofill="name"
+                    />
+                    <div className="flex">
+                        <InputField
+                            placeholder="Contact name"
+                            handleChange={e => this.txtChanged(e, "contact")}
+                            width="100%"
+                            value={this.state.contact}
+                            autofill=""
+                        />
+                        <DropDown />
+                    </div>
                     <input
                         type="submit"
                         value="Send Location"
