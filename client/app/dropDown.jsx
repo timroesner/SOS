@@ -4,38 +4,12 @@ export default class DropDown extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            style: {
-                borderStyle: "none",
-                borderBottom: "1 px solid grey",
-                paddingBottom: "3px",
-                width: this.props.width
-            }, showMenu: false, menuVal: "Relationship"
+            showMenu: false,
+            menuVal: ""
         }
 
     }
 
-    onFocus() {
-        this.setState({
-            style: {
-                outline: "none",
-                borderStyle: "none",
-                borderBottom: "1 px black",
-                paddingBottom: "3px",
-                width: this.props.width
-            }
-        })
-    }
-
-    onBlur() {
-        this.setState({
-            style: {
-                borderStyle: "none",
-                borderBottom: "1 px solid grey",
-                paddingBottom: "3px",
-                width: this.props.width
-            }
-        })
-    }
     clickMenu(event) {
         this.setState({ showMenu: !this.state.showMenu });
     }
@@ -47,25 +21,39 @@ export default class DropDown extends React.Component {
     render() {
         let style = {}
 
+        const optionStyle = {
+            cursor: "pointer",
+
+        }
+
         if (this.state.showMenu) {
             style = {
+                fontSize: "1.1rem",
+                borderStyle: 'none',
+                outline: "none",
                 borderBottom: "2px solid #ff4d4d",
-                paddingBottom: "3px"
+                paddingBottom: "3px",
+                width: "100%"
             }
         } else {
             style = {
-                borderBottom: "2px solid black",
-                paddingBottom: "3px"
+                fontSize: "1.1rem",
+                borderStyle: 'none',
+                borderBottom: "2px solid gray",
+                paddingBottom: "3px",
+                marginBottom: "25px",
+                width: "100%"
             }
         }
         return (
-            <section >
-                <p
+            <section>
+                <input
+                    type="text"
+                    placeholder="Relationship"
                     onClick={() => this.clickMenu()}
                     style={style}
-                >
-                    {this.state.menuVal}
-                </p>
+                    value={this.state.menuVal}
+                />
                 {
                     this.state.showMenu
                     && (
@@ -74,9 +62,15 @@ export default class DropDown extends React.Component {
                             onChange={this.props.handleChange}
                             onFocus={() => this.onFocus()}
                             onBlur={() => this.onBlur()}>
-                            <button onClick={() => this.clickOption(this.event, "test")}>test</button> <br />
-                            <button>option 2</button> <br />
-                            <button>option 3</button> <br />
+                            <p style={optionStyle} onClick={() => this.clickOption(this.event, "Parent")}>Parent</p>
+                            <hr />
+                            <p style={optionStyle} onClick={() => this.clickOption(this.event, "Child")}>Child</p>
+                            <hr />
+                            <p style={optionStyle} onClick={() => this.clickOption(this.event, "Relative")}>Relative</p>
+                            <hr />
+                            <p style={optionStyle} onClick={() => this.clickOption(this.event, "Friend")}>Friend</p>
+                            <hr />
+                            <p style={optionStyle} onClick={() => this.clickOption(this.event, "Other")}>Other</p>
                         </div>)
                 }
             </section>

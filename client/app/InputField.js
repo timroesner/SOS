@@ -9,7 +9,7 @@ export default class InputField extends React.Component {
         borderStyle: 'none',
         borderBottom: "2px solid gray",
         paddingBottom: "3px",
-        marginBottom: "10px",
+        marginBottom: "25px",
         width: this.props.width
       }
     }
@@ -21,7 +21,7 @@ export default class InputField extends React.Component {
         fontSize: "1.1rem",
         outline: 'none',
         borderStyle: 'none',
-        marginBottom: "10px",
+        marginBottom: "25px",
         borderBottom: "2px solid #ff4d4d",
         paddingBottom: "3px",
         width: this.props.width
@@ -36,7 +36,7 @@ export default class InputField extends React.Component {
         borderStyle: 'none',
         borderBottom: "2px solid gray",
         paddingBottom: "3px",
-        marginBottom: "10px",
+        marginBottom: "25px",
         width: this.props.width
       }
     })

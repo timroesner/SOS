@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './Menu.jsx';
 import InputField from './InputField';
 import DropDown from './DropDown.jsx';
 
@@ -40,6 +41,7 @@ export default class HelpView extends React.Component {
     render() {
         return (
             <div>
+                <Header />
                 <h1>
                     Need Help?
                 </h1>
@@ -66,7 +68,7 @@ export default class HelpView extends React.Component {
                         value="Send Location"
                         onClick={this.submitForm.bind(this)}
                         style={{
-                            webkitAppearance: "none",
+                            WebkitAppearance: "none",
                             cursor: "pointer",
                             width: "100%",
                             height: '44px',
